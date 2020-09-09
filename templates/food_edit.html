@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Edit {{item}}
+{% endblock %}
+
+{% block main %}
+
+  <div class="shadow-lg p-3 mt-5 mb-5 bg-light banner">
+    <h2 class="pagetop">Edit {{item}} Info</h2>
+  </div>
+
+  <div class="container col-9 p-5">
+    <form action="/food_edit" method="post">
+      <div class="form-row">
+        <div class="col">
+            <label for="calories" class="label para">Calories:</label>
+            <input type="number" class="form-control" placeholder="Enter Calories" name="calories">
+        </div>
+        <div class="col">
+          <label for="protein" class="label para">Protein:</label>
+          <input type="number" step="0.1" class="form-control" placeholder="Enter Protein (grams)" name="protein">
+        </div>
+      </div><br>
+      <div class="form-row">
+        <div class="col">
+          <label for="carbohydrates" class="label para">Carbohydrates:</label>
+          <input type="number" step="0.1" class="form-control" placeholder="Enter Carbohydrates (grams)" name="carbohydrates">
+        </div>
+        <div class="col">
+          <label for="fat" class="label para">Fat</label>
+          <input type="number" step="0.1" class="form-control" placeholder="Enter Fat (grams)" name="fat">
+        </div>
+      </div><br><br>
+      <button class="btn btn-primary button" type="submit">Update</button>
+    </form>
+  </div>
+{% endblock %}

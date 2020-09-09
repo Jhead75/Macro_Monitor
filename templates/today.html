@@ -1,0 +1,141 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Today's Log
+{% endblock %}
+
+{% block main %}
+    <div class="shadow-lg p-3 mt-5 mb-5 bg-light banner">
+        <h2 class="pagetop">What did you eat today?</h2>
+    </div>
+
+    <div class="container col-9 p-5">
+        <form class="needs-validation" novalidate action="/today" method="post">
+            <div class="container-fluid px-0">
+                <div class="row">
+                    <div class="col-7">
+                        <input autofocus class="form-control" name="item" placeholder="Enter Food or Beverage" type="text" required>
+                        <div class="invalid-feedback" style="text-align:left">
+                            Please enter an item name
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <input autofocus class="form-control" name="qty" placeholder="Enter Quantity" type="integer" required>
+                        <div class="invalid-feedback" style="text-align:left">
+                            Please enter a quantity
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <button class="btn btn-primary" type="submit">Add Food</button>
+                    </div>
+                </div>
+            </div>
+        </form><br>
+
+        <style>
+            .piechart
+            {
+                margin-top: 50px;
+                margin-bottom: 50px;
+                display: block;
+                position: relative;
+                width: 250px;
+                height: 250px;
+                border-radius: 100%;
+                background-image: conic-gradient(
+                    #DCC7AA {{angle[0]}}deg,
+                    #F7882F 0 {{angle[0]+angle[1]}}deg,
+                    #446e9b 0);
+            }
+            .piechart_two
+            {
+                margin-top: 50px;
+                margin-bottom: 50px;
+                position: relative;
+                width: 250px;
+                height: 250px;
+                border-radius: 50%;
+                background-image: conic-gradient(
+                    #DCC7AA {{angle[3]}}deg,
+                    #F7882F 0 {{angle[3]+angle[4]}}deg,
+                    #446e9b 0);
+            }
+
+        </style>
+
+        <div class="row">
+            <div class="col">
+                <h2 class="chartlab">Current</h2>
+            </div>
+            <div class="col">
+                <h2 class="chartlab">Goal</h2>
+            </div>
+        </div>
+        <div class="row chart_container">
+            <div class="col piechart"></div>
+            <ul>
+               <li style="color:#DCC7AA;">{{percent[0]}}% Protein</li>
+               <li style="color:#F7882F;">{{percent[1]}}% Carbs</li>
+               <li style="color:#446e9b;">{{percent[2]}}% Fat</li>
+            </ul>
+            <div class="col piechart_two"></div>
+            <ul>
+               <li style="color:#DCC7AA;">{{percent[3]}}% Protein</li>
+               <li style="color:#F7882F;">{{percent[4]}}% Carbs</li>
+               <li style="color:#446e9b;">{{percent[5]}}% Fat</li>
+            </ul>
+        </div>
+
+        <table class="index">
+            <tr class="entry">
+                <th>Item</th>
+                <th>Qty</th>
+                <th>Calories</th>
+                <th>Protein</th>
+                <th>Carbohydrates</th>
+                <th>Fat</th>
+            </tr>
+            {% for row in log %}
+            <tr class="entry">
+                <td>{{row["item"]}}</td>
+                <td>{{row["qty"]}}</td>
+                <td>{{(row["calories"]*row["qty"])|round}}</td>
+                <td>{{(row["protein"]*row["qty"])|round}}</td>
+                <td>{{(row["carbohydrates"]*row["qty"])|round}}</td>
+                <td>{{(row["fat"]*row["qty"])|round}}</td>
+            </tr>
+            {% endfor %}
+            <tfoot>
+                <tr class="bottomline">
+                    <td>Total</td>
+                    <td></td>
+                    <td>{{(macros[0])|round}}</td>
+                    <td>{{(macros[1])|round}}</td>
+                    <td>{{(macros[2])|round}}</td>
+                    <td>{{(macros[3])|round}}</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <script>
+      // Example starter JavaScript for disabling form submissions if there are invalid fields
+      (function() {
+        'use strict';
+        window.addEventListener('load', function() {
+          // Fetch all the forms we want to apply custom Bootstrap validation styles to
+          var forms = document.getElementsByClassName('needs-validation');
+          // Loop over them and prevent submission
+          var validation = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
+              if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+              form.classList.add('was-validated');
+            }, false);
+          });
+        }, false);
+      })();
+    </script>
+{% endblock %}

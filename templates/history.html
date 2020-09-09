@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Today's Log
+{% endblock %}
+
+{% block main %}
+    <div class="shadow-lg p-3 mt-5 mb-5 bg-light banner">
+        <h2 class="pagetop">Food and Drink Log History</h2>
+    </div>
+
+    <div class="container col-9 p-5">
+        <table class="index">
+            <tr class="entry">
+                <th>Item</th>
+                <th>Qty</th>
+                <th>Calories</th>
+                <th>Protein</th>
+                <th>Carbohydrates</th>
+                <th>Fat</th>
+                <th>Date</th>
+            </tr>
+            {% for row in log %}
+            <tr class="entry">
+                <td>{{row["item"]}}</td>
+                <td>{{(row["qty"])|round}}</td>
+                <td>{{(row["calories"]*row["qty"])|round}}</td>
+                <td>{{(row["protein"]*row["qty"])|round}}</td>
+                <td>{{(row["carbohydrates"]*row["qty"])|round}}</td>
+                <td>{{(row["fat"]*row["qty"])|round}}</td>
+                <td>{{row["date"]}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}

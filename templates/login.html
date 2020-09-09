@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+    {% if flag == 1 %}
+    <div class="container col-9">
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          Must enter user name!
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+    </div>
+    {% elif flag == 2 %}
+    <div class="container col-9">
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          Must enter password!
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+    </div>
+    {% elif flag == 3 %}
+    <div class="container col-9">
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          Username or password is wrong!
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+    </div>
+    {% endif %}
+
+    <div class="container p-5">
+        <form action="/login" method="post">
+            <div class="form-group">
+                <input class="form-control" style="width:auto; display:inline-block;" autocomplete="off" autofocus class="form-control" name="username" placeholder="Username" type="text">
+            </div>
+            <div class="form-group">
+                <input class="form-control" style="width:auto; display:inline-block;" name="password" placeholder="Password" type="password">
+            </div>
+            <button class="btn btn-primary" type="submit">Log In</button>
+        </form>
+        <br><br>
+        <form action="/password" method="get">
+            <button class="btn btn-sm" type="submit">Change Password</button>
+        </form>
+    </div>
+{% endblock %}

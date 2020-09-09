@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    {{food[0]["item"]}}
+{% endblock %}
+
+{% block main %}
+  <div class="shadow-lg p-3 mt-5 mb-5 bg-light banner">
+    <h2 class="pagetop">{{food[0]["item"]}}</h2>
+  </div>
+
+    <div class="container col-9 p-5">
+      <div class="row">
+        <div class="col-5 para" style="text-align:left;">
+          Calories: {{food[0]["calories"]}}
+        </div>
+        <div class="col-4 para" style="text-align:left;">
+          Protein: {{food[0]["protein"]}}
+        </div>
+      </div><br>
+      <div class="row">
+        <div class="col-5 para" style="text-align:left;">
+          Cabohydrates: {{food[0]["carbohydrates"]}}
+        </div>
+        <div class="col-4 para" style="text-align:left;">
+          Fat: {{food[0]["fat"]}}
+        </div>
+      </div>
+    </div>
+
+    <div class="container col-9 p-5">
+      <form action="/food_edit" method="get">
+        <button class="btn btn-primary button" type="submit">Edit Food</button>
+      </form>
+    </div>
+{% endblock %}

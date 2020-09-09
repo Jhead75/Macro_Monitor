@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Profile
+{% endblock %}
+
+{% block main %}
+  <div class="shadow-lg p-3 mt-5 mb-5 bg-light banner">
+    <h2 class="pagetop">{{profile[0]["name"]}}'s Profile</h2>
+  </div>
+
+  <div class="container col-9 p-5">
+    <div class="row">
+      <div class="col-5 para" style="text-align:left;">
+        Calories: {{profile[0]["calories"]}}
+      </div>
+      <div class="col-4 para" style="text-align:left;">
+        Protein: {{profile[0]["protein"]}}
+      </div>
+    </div><br>
+    <div class="row">
+      <div class="col-5 para" style="text-align:left;">
+        Cabohydrates: {{profile[0]["carbohydrates"]}}
+      </div>
+      <div class="col-4 para" style="text-align:left;">
+        Fat: {{profile[0]["fat"]}}
+      </div>
+    </div>
+  </div>
+
+  <div class="container col-9 p-5">
+    <form action="/edit" method="get">
+      <button class="btn btn-primary button" type="submit">Update Goals</button>
+    </form>
+  </div>
+{% endblock %}

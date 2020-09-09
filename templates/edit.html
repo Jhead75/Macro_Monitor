@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Edit Profile
+{% endblock %}
+
+{% block main %}
+
+  <div class="shadow-lg p-3 mt-5 mb-5 bg-light banner">
+    <h2 class="pagetop">Edit {{user[0]["username"]}}'s Profile</h2>
+  </div>
+
+  <div class="container col-9 p-5">
+    <form class="needs-validation" novalidate action="/edit" method="post">
+      <div class="form-row">
+        <div class="col">
+            <label for="calories" class="label para">Calories:</label>
+            <input type="number" class="form-control" placeholder="Enter Daily Calorie Goal" name="calories" required>
+            <div class="invalid-feedback" style="text-align:left">
+              Please enter a calorie target
+            </div>
+        </div>
+        <div class="col">
+          <label for="protein" class="label para">Protein:</label>
+          <input type="number" class="form-control" placeholder="Enter Protein Goal (grams)" name="protein" required>
+          <div class="invalid-feedback" style="text-align:left">
+              Please enter a protein target
+          </div>
+        </div>
+      </div><br>
+      <div class="form-row">
+        <div class="col">
+          <label for="carbohydrates" class="label para">Carbohydrates:</label>
+          <input type="number" class="form-control" placeholder="Enter Carbohydrates Goal (grams)" name="carbohydrates" required>
+          <div class="invalid-feedback" style="text-align:left">
+              Please enter a carbohydrate target
+          </div>
+        </div>
+        <div class="col">
+          <label for="fat" class="label para">Fat:</label>
+          <input type="number" class="form-control" placeholder="Enter Fat Goal (grams)" name="fat" required>
+          <div class="invalid-feedback" style="text-align:left">
+              Please enter a calorie target
+          </div>
+        </div>
+      </div><br><br>
+      <button class="btn btn-primary button" type="submit">Set Goals</button>
+    </form>
+  </div>
+
+  <script>
+  // Example starter JavaScript for disabling form submissions if there are invalid fields
+  (function() {
+    'use strict';
+    window.addEventListener('load', function() {
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      var forms = document.getElementsByClassName('needs-validation');
+      // Loop over them and prevent submission
+      var validation = Array.prototype.filter.call(forms, function(form) {
+        form.addEventListener('submit', function(event) {
+          if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add('was-validated');
+        }, false);
+      });
+    }, false);
+  })();
+  </script>
+{% endblock %}

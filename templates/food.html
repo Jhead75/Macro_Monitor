@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Food and Drink
+{% endblock %}
+
+{% block main %}
+    <div class="shadow-lg p-3 mt-5 mb-5 bg-light banner">
+      <h2 class="pagetop">Search for a Food or Beverage</h2>
+    </div>
+
+    <div class="container p-5 col-9">
+        <form action="/food" method="post">
+            <div class="row">
+                <div class="col-10">
+                     <input autofocus class="form-control" name="item" placeholder="Enter Food or Beverage" type="text">
+                </div>
+                <div class="col-2">
+                     <button class="btn btn-primary" type="submit">Search</button>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}
