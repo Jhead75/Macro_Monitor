@@ -1,0 +1,106 @@
+nav .navbar-brand
+{
+    /* size for brand */
+    font-size: xx-large;
+}
+
+main .form-control
+{
+
+}
+
+main
+{
+    /* scroll horizontally as needed */
+    overflow-x: auto;
+
+    /* center contents */
+    text-align: center;
+}
+
+main img
+{
+    /* constrain images on small screens */
+    max-width: 100%;
+}
+
+.banner
+{
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+}
+
+.pagetop
+{
+    text-align: left;
+    color: #446e9b;
+    margin-left: 16vw;
+}
+
+.index tr:nth-child(even)
+{
+    background:#D3D3D3;
+    table-layout: fixed;
+    width:100%;
+}
+
+.index
+{
+    table-layout: fixed;
+    width:100%;
+}
+
+.entry
+{
+    text-align:left;
+    border:solid;
+    border-width:1px 0;
+    height:50px;
+}
+
+.bottomline
+{
+    text-align:left;
+    height:50px;
+    font-weight:bold;
+}
+
+.chart_container
+{
+    display: grid;
+    grid-template-columns: 3fr 2fr 3fr 2fr;
+    grid-gap: 20px;
+}
+
+.label
+{
+    float: left;
+}
+
+.button
+{
+    float:left;
+}
+
+.para
+{
+    font-size: 25px;
+}
+
+.chartlab
+{
+    text-align: left;
+    color: #446e9b;
+}
+
+ul
+{
+    list-style: none;
+    padding-left: 0;
+    text-align: left;
+    position: relative;
+}
