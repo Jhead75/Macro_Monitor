@@ -2,6 +2,8 @@ Name: John Head
 Class: CS50x
 Project: Macro Monitor
 
+Video Link: https://www.youtube.com/watch?v=AIT3pxmDrFk
+
 Purpose: For my final project, I wanted to build on the Python, SQL, CSS, and HTML that was taught in class.
          I also wanted to build something that I might use, so starting with the distribution from the finance lesson
          as a basis, I built a nutritional macro counter. The tool allows a user to register, set a target calorie and
